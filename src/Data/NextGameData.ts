@@ -1,29 +1,11 @@
 import fetch from 'node-fetch';
 import { api } from '../Api/Routes';
+import INextGameData from '../Interfaces/INextGameData';
 
 class NextGameData
 {
 	private static instance: NextGameData;
-	private	 gameData = {
-		date: '',
-		times: {
-			pt: '',
-			mt: '',
-			ct: '',
-			et: '',
-			at: '',
-			aedt: ''
-		},
-		away: {
-			team: '',
-			record: ''
-		},
-		home: {
-			team: '',
-			record: ''
-		},
-		venue: ''
-	};
+	private	 gameData: INextGameData;
 
 	public static getInstance()
 	{

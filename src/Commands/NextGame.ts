@@ -1,5 +1,6 @@
 import { Message, RichEmbed } from 'discord.js';
 import NextGameData from '../Data/NextGameData';
+import INextGameData from '../Interfaces/INextGameData';
 import Command from './Command';
 
 class NextGame extends Command
@@ -18,7 +19,7 @@ class NextGame extends Command
 		this.respond(msg, game);
 	}
 
-	private respond(msg: Message, data: any)
+	private respond(msg: Message, data: INextGameData)
 	{
 		const embed = new RichEmbed();
 		embed.setTitle(`${data.away.team} (${data.away.record}) @ ${data.home.team} (${data.home.record})`);
