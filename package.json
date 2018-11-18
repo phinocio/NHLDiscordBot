@@ -2,23 +2,32 @@
   "name": "nhldiscordbot",
   "version": "0.0.1",
   "description": "NHL Discord Bot to get stats, goal updates, etc",
-  "main": "bot.js",
+  "main": "build/App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc --noEmit",
+    "watch": "rm -rf dist/ && tsc && nodemon",
+    "dev": "rm -rf dist/ && tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phinocio/NHLDiscordBot.git"
   },
   "author": "Phinocio",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/phinocio/NHLDiscordBot/issues"
   },
   "homepage": "https://github.com/phinocio/NHLDiscordBot#readme",
   "dependencies": {
-    "discord.js": "^11.3.2",
-    "moment": "^2.22.0",
-    "moment-timezone": "^0.5.14"
+    "discord.js": "^11.4.2",
+    "moment": "^2.22.2",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.*",
+    "@types/node-fetch": "^2.*",
+    "nodemon": "^1.*",
+    "tslint": "^5.*",
+    "typescript": "^3.*"
   }
 }

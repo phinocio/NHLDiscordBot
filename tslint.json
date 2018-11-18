@@ -1,0 +1,65 @@
+{
+	"lintOptions": {
+		"typeCheck": true,
+		"exclude": [
+			"dist/",
+			"node_modules/"
+		]
+	},
+	"defaultSeverity": "error",
+	"extends": ["tslint:recommended"],
+	"rules": {
+		"member-access": true,
+		"no-any": true,
+		"prefer-for-of": true,
+		"typedef": true,
+		"no-console": [
+			false,
+			"log",
+			"error"
+		],
+		"no-empty": true,
+		"curly": true,
+		"no-null-keyword": true,
+		"no-unused-expression": true,
+		"no-unused-variable": true,
+		"no-var-keyword": true,
+		"triple-equals": true,
+		"cyclomatic-complexity": true,
+		"depre4cated": true,
+		"linebreak-style": [true, "LF"],
+		"max-classes-per-file": [true, 1],
+		"prefer-readonly": true,
+		"arrow-return-shorthand": true,
+		"no-for-in-array": true,
+		"class-name": true,
+		"completed-docs": true,
+		"jsdoc-format": true,
+		"new-parens": true,
+		"arrow-parens": false,
+		"quotemark": [true, "single"],
+		"trailing-comma": false,
+		"indent": [true, "tabs"],	
+		"member-ordering": [
+			true,
+			{
+				"order": "fields-first"
+			}
+		],
+		"one-line": false,
+		"align": [
+			true,
+			"parameters",
+			"statements"
+		],
+		"whitespace": [
+			true,
+			"check-branch",
+			"check-operator",
+			"check-typecast",
+			"check-module",
+			"check-seperator"
+		]
+	},
+	"rulesDirectory": []
+}
