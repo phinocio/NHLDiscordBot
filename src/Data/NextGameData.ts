@@ -5,7 +5,7 @@ import INextGameData from '../Interfaces/INextGameData';
 class NextGameData
 {
 	private static instance: NextGameData;
-	private	 gameData: INextGameData;
+	private	gameData: INextGameData;
 
 	public static getInstance()
 	{
@@ -24,34 +24,32 @@ class NextGameData
 
 	private async getGame()
 	{
-		try {
-			await fetch(api.nextGame, {
-					method: 'get'
-				})
-					.then(res => res.json())
-					.then(json => {
-						this.gameData.date = json.teams[0].nextGameSchedule.dates[0].date;
+		try
+		{
+			const response = await fetch(api.nextGame, {
+				method: 'get'
+			});
+			const json = await response.json();
+			const date = json.teams[0].nextGameSchedule.dates[0];
+			const game = json.teams[0].nextGameSchedule.dates[0].games[0];
+			const venue = game.venue;
+			const homeTeam = game.teams.home;
+			const awayTeam = game.teams.away;
 
-						this.gameData.away.team = json.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name;
+			this.gameData.date = date.date;
 
-						this.gameData.away.record = json.teams[0].nextGameSchedule.dates[0].games[0].teams.away.leagueRecord.wins
-						+ '-' +
-						json.teams[0].nextGameSchedule.dates[0].games[0].teams.away.leagueRecord.losses
-						+ '-' +
-						json.teams[0].nextGameSchedule.dates[0].games[0].teams.away.leagueRecord.ot;
+			this.gameData.away.team = awayTeam.team.name;
 
-						this.gameData.home.team = json.teams[0].nextGameSchedule.dates[0].games[0].teams.home.team.name;
+			this.gameData.away.record =
+				`${awayTeam.leagueRecord.wins} - ${awayTeam.leagueRecord.losses} - ${awayTeam.leagueRecord.ot}`;
 
-						this.gameData.home.record = json.teams[0].nextGameSchedule.dates[0].games[0].teams.home.leagueRecord.wins
-							+ '-' +
-							json.teams[0].nextGameSchedule.dates[0].games[0].teams.home.leagueRecord.losses
-							+ '-' +
-							json.teams[0].nextGameSchedule.dates[0].games[0].teams.home.leagueRecord.ot;
+			this.gameData.home.team = homeTeam.team.name;
 
-						this.gameData.venue = json.teams[0].nextGameSchedule.dates[0].games[0].venue.name;
+			this.gameData.home.record =
+				`${homeTeam.leagueRecord.wins} - ${homeTeam.leagueRecord.losses} - ${homeTeam.leagueRecord.ot}`;
 
-					});
-		}catch (error)
+			this.gameData.venue = venue.name;
+		} catch (error)
 		{
 			console.log(`Error: ${error}`);
 		}
