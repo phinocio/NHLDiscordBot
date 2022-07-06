@@ -20,7 +20,7 @@
   "homepage": "https://github.com/phinocio/NHLDiscordBot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
